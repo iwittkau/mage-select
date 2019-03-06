@@ -79,15 +79,15 @@ func flags() string {
 
 // tag returns the git tag for the current branch or "" if none.
 func tag() string {
-	// s, _ := sh.Output("git", "describe", "--tags")
-	s := "v0.0.0"
+	s, _ := sh.Output("git", "describe", "--tags")
+	// s := "v0.0.0"
 	return s
 }
 
 // hash returns the git hash for the current repo or "" if none.
 func hash() string {
-	// hash, _ := sh.Output("git", "rev-parse", "--short", "HEAD")
-	hash := "0000000"
+	hash, _ := sh.Output("git", "rev-parse", "--short", "HEAD")
+	// hash := "0000000"
 	return hash
 }
 
