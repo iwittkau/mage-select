@@ -35,7 +35,6 @@ func searcher(targets []string) list.Searcher {
 }
 
 func main() {
-
 	if len(os.Args) > 1 {
 		if os.Args[1] == "-version" {
 			fmt.Printf("mage-select CLI frontend: %s\nBuild Date: %s\nCommit: %s\nMage: %s\n", tag, timestamp, hash, mageVersion)
@@ -85,7 +84,6 @@ func main() {
 	}
 
 	_, result, err := prompt.Run()
-
 	if err != nil {
 		return
 	}
@@ -94,6 +92,5 @@ func main() {
 
 	fmt.Printf("mage %s\n", result)
 
-	os.Args = append(os.Args, result)
-	os.Exit(mage.Main())
+	os.Exit(mage.ParseAndRun(os.Stdout, os.Stderr, os.Stdin, []string{result}))
 }
