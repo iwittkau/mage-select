@@ -1,6 +1,6 @@
 {
     "extends": [
-        "config:base"
+        "config:base",        
     ],
     "semanticCommitType": "chore",
     "semanticCommitScope": "deps",
@@ -8,6 +8,7 @@
     "prCreation": "immediate",
     "pruneStaleBranches": true,
     "unicodeEmoji": true,
+    "automergeStrategy": "squash",
     "postUpdateOptions": [
         "gomodTidy",
         "gomodUpdateImportPaths"
@@ -18,13 +19,15 @@
     },
     "packageRules": [
         {
-            "matchPackagePatterns": [
-                "mage"
+            "matchPackageNames": [
+                "github.com/magefile/mage"
             ],
             "matchLanguages": [
                 "golang"
             ],
-            "groupName": "go-dev-tooling-autoapprove"
+            "groupName": "mage-auto-approve",
+            "automergeType": "pr",
+            "patch": true
         }
     ],
     "vulnerabilityAlerts": {
