@@ -1,0 +1,39 @@
+{
+    "extends": [
+        "config:base",        
+    ],
+    "semanticCommitType": "chore",
+    "semanticCommitScope": "deps",
+    "rebaseWhen": "behind-base-branch",
+    "prCreation": "immediate",
+    "pruneStaleBranches": true,
+    "unicodeEmoji": true,
+    "automergeStrategy": "squash",
+    "postUpdateOptions": [
+        "gomodTidy",
+        "gomodUpdateImportPaths"
+    ],
+    "gomod": {
+        "enabled": true,
+        "commitMessageTopic": "⬆️ go module {{depName}}"
+    },
+    "packageRules": [
+        {
+            "matchPackageNames": [
+                "github.com/magefile/mage"
+            ],
+            "matchLanguages": [
+                "golang"
+            ],
+            "groupName": "mage-auto-approve",
+            "automergeType": "pr",
+            "patch": true
+        }
+    ],
+    "vulnerabilityAlerts": {
+        "enabled": true,
+        "labels": [
+            "security"
+        ]
+    }
+}
