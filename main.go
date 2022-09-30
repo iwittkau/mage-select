@@ -44,6 +44,12 @@ func main() {
 
 	cmd := exec.Command("mage", "-l")
 	cmd.Stderr = os.Stderr
+
+	cmdEnviron := []string{}
+	cmdEnviron = append(cmdEnviron, cmd.Environ()...)
+	cmdEnviron = append(cmdEnviron, "MAGEFILE_ENABLE_COLOR=0")
+	cmd.Env = cmdEnviron
+
 	out, err := cmd.Output()
 	if err != nil {
 		return
