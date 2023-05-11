@@ -3,7 +3,7 @@ module github.com/iwittkau/mage-select
 go 1.19
 
 require (
-	github.com/magefile/mage v1.14.0
+	github.com/magefile/mage v1.15.0
 	github.com/manifoldco/promptui v0.9.0
 )
 
