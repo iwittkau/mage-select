@@ -62,8 +62,10 @@ func main() {
 		line := scan.Text()
 		if strings.HasPrefix(line, "Targets:") {
 			continue
+		} else if strings.TrimSpace(line) == "" {
+			break
 		}
-		line = strings.TrimSpace(line)
+		line = strings.TrimSpace(strings.ReplaceAll(line, "*", ""))
 		targets = append(targets, line)
 	}
 
